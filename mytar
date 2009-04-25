@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+# mytar
+# lists content of tar or tars up files
+
+USAGE="Usage: `basename $0` [-c|-t] [file|directory]"
+
+if [ $# -lt 2 ] ; then
+    echo "$USAGE"
+    exit 1
+fi
+
+case "$1" in
+    -t) TARGS="-tvf $2" ;;
+    -c) TARGS="-cvf $2.tar $2" ;;
+    *) echo "$USAGE"
+       exit 0
+       ;;
+esac
+tar $TARGS
