@@ -1,0 +1,17 @@
+#!/bin/sh
+x=0
+z="$1"
+while [ "$x" -lt "$z" ] ; # this is does as many new lines are there are z
+	do
+	   y="$z"
+	   while [ "$x" -lt "$y" ] ; # this outputs y through 0 on one line
+		   do
+		       if [ "$y" -le 9 ] ; then 
+		          printf "0"
+		       fi		
+		   printf "$y "
+		   y=`expr $y - 1`		
+	    done
+    echo
+    z=`expr $z - 1`
+done
