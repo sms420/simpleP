@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+  <head> 
+  	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+  	<title>feature me</title> 
+  	<link rel="stylesheet" href="http://static.jquery.com/files/rocker/css/reset.css" type="text/css" /> 
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+  	
+  	
+  	<link rel="shortcut icon" href="http://www.13elieve.com/favicon.ico" type="image/x-icon"/>
+  	<script type="text/javascript">
+
+     //welcome to jquery...the line below basically says don't run me till the page is done setting up the dom 
+     jQuery(document).ready(function() {
+       // put all your jQuery goodness in here.
+  
+      // lets remember the default feature image src so we can put it back later
+      var original_src = jQuery("#feature_me img").attr("src");
+      
+      // now lets setup the hover logic using jquery and CSS selectors!
+      jQuery("#icons a img").hover(
+        // Mouse over
+        function () {
+          // these vars will use the image you hover on "this" 
+          // and attach a suffix modifier to the name to make it featured
+          var suffix         = "_big";
+          var this_img       = this.src.substring(0,this.src.length-4);
+          var this_img_type  = this.src.substring(this.src.lastIndexOf("."),this.src.length);      
+          var featured_image = this_img + suffix + this_img_type;              
+         
+          // Debug stuff
+          // alert(this_img);
+          // alert(this_img_type);
+          // alert(featured_image);
+          
+          // now do the src swap
+          jQuery("#feature_me img").attr("src", featured_image);
+        },
+        // Mouse out
+        function () {
+          // now restore the image to the original src
+          jQuery("#feature_me img").attr("src", original_src);          
+       }
+      );
+      
+     });
+    </script>
+  	
+  </head>
+  <body>
+    <!--check it.... no JS in them there links...pure HTML baby-->
+    <div id="icons">
+      <a class="icon_links" href="#"><img src="http://smsloadfile.com/dev-pics/4th_St_African_Mahogany_Doors_and_Floating_Shelves_small.jpg"/></a>
+      <a class="icon_links" href="#"><img src="http://smsloadfile.com/dev-pics/4th_St_Bathroom_Addition_Entrance_small.jpg"/></a>
+      <a class="icon_links" href="#"><img src="http://smsloadfile.com/dev-pics/4th_St_Bathroom_Remodel_small.jpg"/></a>
+      <a class="icon_links" href="#"><img src="http://smsloadfile.com/dev-pics/4th_St_Bathroom_Remodel_with_Custom_Shelving_small.jpg"/></a>
+    </div>
+    <div id="feature_me">
+        <img src="http://smsloadfile.com/pics/bath.jpg";/>
+    </div>
+  </body>
+</html>
